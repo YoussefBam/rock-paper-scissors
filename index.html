@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function playGame(){
+            for(i=0;i<5;i++){
+                let computerChoice=getComputerChoice();
+                let humanChoice=getHumanChoice();
+                playRound(humanChoice, computerChoice);
+            }
+        }
+        function playRound(humanChoice, computerChoice) {
+            humanChoice=humanChoice.toLowerCase();
+            computerChoice=computerChoice.toLowerCase();
+            if (humanChoice==computerChoice){
+                console.log("draw") ;
+            }
+            else if (humanChoice=="rock" && computerChoice=="scissors" || humanChoice=="paper" && computerChoice=="rock" || humanChoice=="scissors" && computerChoice=="paper"){
+                humanScore++;
+                console.log(`You win ${humanChoice} beats ${computerChoice}`);
+            }
+            else{
+                computerScore++;
+                console.log(`You lose ${computerChoice} beats ${humanChoice}`);
+
+            }
+
+        }
+        function getComputerChoice(){
+            let random= Math.random();
+            if (random>=0 && random<=0.3){
+                return "rock";
+            }
+            else if (random>0.3 && random<=0.6){
+                return "paper";
+            }
+            else{
+                return "scissors";
+            }
+        }
+
+        function getHumanChoice(){
+            return prompt("Rock, paper or scissors");
+        }
+
+        
+        let humanScore=0;
+        let computerScore=0;
+        playGame();
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
